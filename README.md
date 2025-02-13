@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 [![GitHub top language](https://img.shields.io/github/languages/top/Markus-G-S-Weiss/CubeIsoFinder.svg)]()
 
-*Created by Markus G. S. Weiss on 2025-XX-XX.*
+*Created by Markus G. S. Weiss on 2025-02-13.*
 
 CubeIsoFinder is a lightweight, modern C++ tool built with CMake that parses cube files, integrates density or orbital data, and computes isovalues from user-specified percentages.
 
