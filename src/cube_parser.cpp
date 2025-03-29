@@ -296,9 +296,11 @@ double computeIsovalueFromPercentage_Orbital(const std::vector<double> &values, 
     for (const auto &p : points) {
         integ += p.density;
         if (integ >= target)
-            return std::sqrt(p.density); // Return the square-rooted value.
+            //return std::sqrt(p.density); // Return the square-rooted value.
+            return p.value; // Return the square-rooted value.
     }
-    return std::sqrt(points.back().density);
+    //return std::sqrt(points.back().density);
+    return points.back().value;
 }
 
 
