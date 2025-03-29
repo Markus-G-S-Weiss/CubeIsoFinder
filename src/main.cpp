@@ -48,10 +48,12 @@ int main(int argc, char *argv[]) {
         if (arg == "-p" && i + 1 < argc) {
             usePercentage = true;
             inputValue = std::stod(argv[++i]);
-        } else if (arg == "-v" && i + 1 < argc) {
+        }
+        else if (arg == "-v" && i + 1 < argc) {
             useIsovalue = true;
             inputValue = std::stod(argv[++i]);
-        } else if (arg == "-s" && i + 1 < argc) {
+        }
+        else if (arg == "-s" && i + 1 < argc) {
             std::string signStr = argv[++i];
             if (signStr == "pos")
                 positive = true;
@@ -61,7 +63,8 @@ int main(int argc, char *argv[]) {
                 std::cerr << "Error: Invalid sign option. Use 'pos' or 'neg'.\n";
                 return 1;
             }
-        } else {
+        }
+        else {
             std::cerr << "Error: Unknown option " << arg << "\n";
             printUsage(argv[0]);
             return 1;
@@ -100,7 +103,8 @@ int main(int argc, char *argv[]) {
                 totalIntegrated += v * v;
             totalIntegrated *= voxelVolume;
             std::cout << "Total integrated orbital density: " << totalIntegrated << "\n";
-        } else {
+        }
+        else {
             // For density data, integrate the values directly.
             for (double v : cube.values)
                 totalIntegrated += v;
@@ -139,7 +143,11 @@ int main(int argc, char *argv[]) {
                 }
                 integratedAbove *= voxelVolume;
                 std::cout << "Integrated orbital density above threshold (native): " << integratedAbove << "\n";
-            } else {
+                double enclosedPercentage = computePercentageFromIsovalue_Orbital(cube.values, isovalue_native, positive);
+                std::cout << "Computed percentage of total orbital density above threshold: "
+                          << enclosedPercentage << "%\n";
+            }
+            else {
                 std::cout << "Integrating (in density mode) to reach " << inputValue << "% of the total quantity...\n";
                 double isovalue_native = computeIsovalueFromPercentage_Density(cube.values, inputValue, positive);
                 double isovalue_converted = convertDensity(isovalue_native, nativeIsAngstrom);
@@ -154,8 +162,12 @@ int main(int argc, char *argv[]) {
                 }
                 integratedAbove *= voxelVolume;
                 std::cout << "Integrated electron density above threshold (native): " << integratedAbove << "\n";
+                double enclosedPercentage = computePercentageFromIsovalue_Density(cube.values, isovalue_native, positive);
+                std::cout << "Computed percentage of total electron density above threshold: "
+                          << enclosedPercentage << "%\n";
             }
-        } else {
+        }
+        else {
             if (cube.header.isOrbital) {
                 double percentage = computePercentageFromIsovalue_Orbital(cube.values, inputValue, positive);
                 std::cout << "For orbital data, the percentage of total charge enclosed by isovalue " 
@@ -163,7 +175,8 @@ int main(int argc, char *argv[]) {
                           << percentage << "%\n";
                 std::cout << "Converted isovalue: " << convertOrbital(inputValue, nativeIsAngstrom)
                           << " electrons/" << convUnit << "^(3/2)\n";
-            } else {
+            }
+            else {
                 double percentage = computePercentageFromIsovalue_Density(cube.values, inputValue, positive);
                 std::cout << "For density data, the percentage of total charge enclosed by isovalue " 
                           << inputValue << " (electrons/" << nativeUnit << "^3) is: " 
@@ -172,7 +185,8 @@ int main(int argc, char *argv[]) {
                           << " electrons/" << convUnit << "^3\n";
             }
         }
-    } catch (const std::exception &ex) {
+    }
+    catch (const std::exception &ex) {
         std::cerr << "Exception encountered: " << ex.what() << "\n";
         return 1;
     }
