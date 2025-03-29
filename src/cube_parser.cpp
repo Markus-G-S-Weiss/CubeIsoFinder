@@ -182,7 +182,8 @@ double convertOrbital(double nativeOrbital, bool nativeIsAngstrom) {
     // To convert to electrons/Å^(3/2), divide by (0.529177210544)^(1.5).
     if (!nativeIsAngstrom) {
         return nativeOrbital / std::pow(0.529177210544, 1.5);
-    } else {
+    }
+    else {
         return nativeOrbital;
     }
 }
@@ -218,7 +219,8 @@ double computeIsovalueFromPercentage_Density(const std::vector<double> &values, 
             if (integ >= target)
                 return v;
         }
-    } else {
+    }
+    else {
         std::sort(filtered.begin(), filtered.end());
         double integ = 0.0;
         for (double v : filtered) {
@@ -237,7 +239,8 @@ double computePercentageFromIsovalue_Density(const std::vector<double> &values, 
             total += v;
             if (v >= isovalue)
                 integ += v;
-        } else if (!positive && v < 0) {
+        }
+        else if (!positive && v < 0) {
             total += v;
             if (v <= isovalue)
                 integ += v;
@@ -281,7 +284,8 @@ double computeIsovalueFromPercentage_Orbital(const std::vector<double> &values, 
     /*std::ofstream debugFile("sorted_debug_finder.txt");
     if (!debugFile) {
         std::cerr << "Error: Unable to open file for writing sorted data." << std::endl;
-    } else {
+    }
+    else {
         debugFile << "Sorted list of grid point indices (i, |w|, d):" << std::endl;
         for (size_t i = 0; i < points.size(); ++i) {
             debugFile << i << ": index " << points[i].index
