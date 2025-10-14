@@ -1,0 +1,11 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Weiss"
+  given-names: "Markus G. S."
+  orcid: "https://orcid.org/0009-0002-2682-262X"
+title: "CubeIsoFinder"
+version: 1.0.0
+doi: 10.5281/zenodo.17352552
+date-released: 2025-10-14
+url: "https://github.com/Markus-G-S-Weiss/CubeIsoFinder"
