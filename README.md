@@ -2,6 +2,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 [![GitHub top language](https://img.shields.io/github/languages/top/Markus-G-S-Weiss/CubeIsoFinder.svg)]()
+[![DOI](https://zenodo.org/badge/931864064.svg)](https://doi.org/10.5281/zenodo.17352551)
 
 *Created by Markus G. S. Weiss on 2025-02-13.*
 
